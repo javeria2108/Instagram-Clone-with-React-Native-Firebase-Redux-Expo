@@ -1,6 +1,8 @@
 import React from 'react'
 import { Component } from 'react'
 import {View, Button, TextInput} from 'react-native'
+import { createUserWithEmailAndPassword } from 'firebase/auth';
+import { auth } from '../firebaseConfig';
 export class Register extends Component{
     constructor(props){
         super(props);
@@ -11,6 +13,16 @@ export class Register extends Component{
         }
         this.onSignUp=this.onSignUp.bind(this)
     }
+    onSignUp() {
+        const { email, password, name } = this.state;
+        createUserWithEmailAndPassword(auth, email, password)
+          .then((result) => {
+            console.log(result);
+          })
+          .catch((error) => {
+            console.error(error);
+          });
+      }
     render()
     { return (
         <View>
@@ -24,7 +36,7 @@ export class Register extends Component{
             placeholder='password'
             secureTextEntry={true}
             onChangeText={(password)=>this.setState({password})}/>
-            <Button onPress={()=>this.onSignUp}
+            <Button onPress={this.onSignUp}
             title='Sign Up'/>
         </View>
       )}
