@@ -1,7 +1,7 @@
 
 import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
-
+import { getFirestore } from "firebase/firestore";
 const firebaseConfig = {
   apiKey: "AIzaSyBXex5esD3Kqo0BtsYoV-0I0uT1vxuI8e4",
   authDomain: "instagram-clone-8abae.firebaseapp.com",
@@ -15,3 +15,4 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 export const auth =getAuth(app);
+export const db=getFirestore(app);

@@ -36,20 +36,28 @@ class Index extends Component{
       <View>
         <Text>Loading</Text>
       </View>
+    }if(!loggedIn){
+      return (
+        <View style={{ flex: 1, justifyContent: "center" }}>
+         <Link href="/Register" asChild>
+          <Button title="Register"/>
+        </Link>
+        <Link href="/Login" asChild>
+        <Button
+          title="Login"
+        
+        />
+        </Link>
+      </View>
+      );
     }
-    return (
-      <View style={{ flex: 1, justifyContent: "center" }}>
-       <Link href="/Register" asChild>
-        <Button title="Register"/>
-      </Link>
-      <Link href="/Login" asChild>
-      <Button
-        title="Login"
-      
-      />
-      </Link>
-    </View>
-    );
+    return(
+      <View>
+        <Text>User is logged in</Text>
+      </View>
+    )
+    
+  
   }
 }
 export default Index
