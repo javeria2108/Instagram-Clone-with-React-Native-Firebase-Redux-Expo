@@ -9,6 +9,7 @@ export function fetchUser() {
       const userDocSnap = await getDoc(userDocRef);
 
       if (userDocSnap.exists()) {
+        console.log(userDocSnap.data())
         dispatch({ type: USER_STATE_CHANGE, currentUser: userDocSnap.data() });
       } else {
         console.log("No such document!");

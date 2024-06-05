@@ -8,6 +8,8 @@ export class MainScreen extends Component {
         this.props.fetchUser();
     }
   render() {
+    const {currentUser}=this.props;
+    console.log(currentUser);
     return (
         <View>
         <Text>User is logged in</Text>
@@ -15,6 +17,9 @@ export class MainScreen extends Component {
     )
   }
 }
+const mapStateToProps = (store) => ({
+    currentUser: store.userState.currentUser,
+})
 const mapDispatchProps=(dispatch)=>bindActionCreators({fetchUser},dispatch)
 
-export default connect(null,mapDispatchProps) (MainScreen)
+export default connect(mapStateToProps,mapDispatchProps) (MainScreen)
