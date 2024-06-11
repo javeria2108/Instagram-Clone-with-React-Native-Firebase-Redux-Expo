@@ -3,17 +3,21 @@ import { View,Text } from 'react-native'
 import { connect } from 'react-redux'
 import { fetchUser } from '../redux/actions'
 import { bindActionCreators } from 'redux'
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import Feed from './main/Feed'
+
+const Tab = createBottomTabNavigator();
+
 export class MainScreen extends Component {
     componentDidMount(){
         this.props.fetchUser();
     }
   render() {
     const {currentUser}=this.props;
-    console.log(currentUser);
     return (
-        <View>
-        <Text>User is logged in</Text>
-      </View>
+        <Tab.Navigator>
+        <Tab.Screen name="Feed" component={Feed} />
+      </Tab.Navigator>
     )
   }
 }

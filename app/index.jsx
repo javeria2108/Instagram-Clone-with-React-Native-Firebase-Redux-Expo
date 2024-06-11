@@ -3,6 +3,9 @@ import { Link } from "expo-router";
 import { Component } from "react";
 import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "../firebaseConfig";
+import MainScreen from "../components/MainScreen";
+import { Provider } from "react-redux";
+import store from "../redux/store";
 class Index extends Component{
   constructor(props){
     super(props);
@@ -52,9 +55,9 @@ class Index extends Component{
       );
     }
     return(
-      <View>
-        <Text>User is logged in</Text>
-      </View>
+      <Provider store={store}>
+      <MainScreen/>
+      </Provider>
     )
     
   
